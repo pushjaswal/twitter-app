@@ -14,6 +14,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var timaStampLabel: UILabel!
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    @IBOutlet weak var favoriteLabel: UILabel!
     
     
     var tweet : Tweet! {
@@ -26,6 +28,13 @@ class TweetCell: UITableViewCell {
             formatter.dateFormat = "EEE MMM d"
             var time  = formatter.stringFromDate(tweet.timeStamp!)
             timaStampLabel.text = time
+//            
+//            if(tweet.retweetCount > 0){
+//                retweetCountLabel.text = "\(tweet.retweetCount)"
+//            }
+//            if(tweet.favoritesCount > 0){
+//                favoriteLabel.text = "\(tweet.favoritesCount)"
+//            }
             
         }
     }
