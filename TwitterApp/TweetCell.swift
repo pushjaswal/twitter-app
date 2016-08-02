@@ -11,16 +11,31 @@ import UIKit
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var timaStampLabel: UILabel!
+    
     
     var tweet : Tweet! {
         didSet{
-            tweetTextLabel.text = tweet.text 
+            tweetTextLabel.text = tweet.text
+            thumbImageView.setImageWithURL((tweet.user?.profileURL)!)
+            userNameLabel.text = tweet.user?.name as? String
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "EEE MMM d"
+            var time  = formatter.stringFromDate(tweet.timeStamp!)
+            timaStampLabel.text = time
+            
         }
     }
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
         // Initialization code
     }
 
